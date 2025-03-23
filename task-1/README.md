@@ -6,3 +6,7 @@
 - 4.0 Add the latest Gradle and the JDBC SQLite package to the above as part of a Gradle project (build.gradle): [Commit](https://github.com/viashchuk/ebiznes/commit/52007ef0e944fa67d79554532bb09f98f5c71937)
 - 4.5 Create a HelloWorld example and run the application through CMD and gradle: [Commit](https://github.com/viashchuk/ebiznes/commit/0d4d1df8b7adf10a45f53a244d0ca40c38edb49a)
 - 5.0 Add docker-compose configuration: [Commit](https://github.com/viashchuk/ebiznes/commit/74df0d9cae099d0e2a90a8b12f2dcd28271e8f9a)
+
+## Docker Hub
+
+- [viktoriiaiashchuk/task-1](https://hub.docker.com/r/viktoriiaiashchuk/task-1)
