@@ -1,4 +1,3 @@
 package models
-import play.api.libs.json.Json
 
-case class Product(id: Long, price: Double, title: String, description: String)
+case class Product(id: Long, price: Double, title: String, description: String, category_id: Option[Long])

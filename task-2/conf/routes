@@ -11,5 +11,19 @@ POST    /products                   controllers.ProductController.create
 PUT     /products/:id               controllers.ProductController.update(id: Long)
 DELETE  /products/:id               controllers.ProductController.delete(id: Long)
 
+
+GET     /categories                 controllers.CategoryController.index
+GET     /categories/:id             controllers.CategoryController.show(id: Long)
+POST    /categories                 controllers.CategoryController.create
+PUT     /categories/:id             controllers.CategoryController.update(id: Long)
+DELETE  /categories/:id             controllers.CategoryController.delete(id: Long)
+
+
+GET     /carts                      controllers.CartController.index
+GET     /carts/:id                  controllers.CartController.show(id: Long)
+POST    /carts                      controllers.CartController.create
+PUT     /carts/:id                  controllers.CartController.update(id: Long)
+DELETE  /carts/:id                  controllers.CartController.delete(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

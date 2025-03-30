@@ -7,22 +7,40 @@ import scala.collection.mutable.ListBuffer
 class ProductRepo @Inject() () {
 
   private val products = ListBuffer(
-    Product(1, 5000.0, "iPhone 16", "Smartfon APPLE iPhone 16 5G 256GB 6.1 Czarny"),
-    Product(2, 3000.0, "iPhone 12", "Smartfon APPLE iPhone 12 5G 128GB 6.1 Czarny MGJA3PM/A")
+    Product(
+      1,
+      5000.0,
+      "iPhone 16",
+      "Smartfon APPLE iPhone 16 5G 256GB 6.1 Czarny",
+      Some(1L)
+    ),
+    Product(
+      2,
+      3000.0,
+      "iPhone 12",
+      "Smartfon APPLE iPhone 12 5G 128GB 6.1 Czarny MGJA3PM/A",
+      Some(1L)
+    )
   )
 
   def all: Seq[Product] = products.toSeq
 
   def findById(id: Long): Option[Product] = products.find(_.id == id)
 
-  def create(price: Double, title: String, description: String): Product = {
+  def create(
+      price: Double,
+      title: String,
+      description: String,
+      category_id: Option[Long]
+  ): Product = {
     val newId = if (products.nonEmpty) products.map(_.id).max + 1 else 1L
 
     val newProduct = Product(
       newId,
       price,
       title,
-      description
+      description,
+      category_id
     )
     products += newProduct
     newProduct
@@ -32,7 +50,8 @@ class ProductRepo @Inject() () {
       id: Long,
       price: Double,
       title: String,
-      description: String
+      description: String,
+      category_id: Option[Long]
   ): Option[Product] = {
 
     if (products.exists(_.id == id)) {
@@ -42,7 +61,8 @@ class ProductRepo @Inject() () {
         id,
         price,
         title,
-        description
+        description,
+        category_id
       )
       products.update(currentProduct, updatedProduct)
 

@@ -8,14 +8,15 @@ import play.api.data.Forms._
 import play.api.data.format.Formats._
 import play.api.data.validation.Constraints._
 import play.api.libs.json.Json
-import models.{ProductRepo, Product}
+import models.{ProductRepo, Product, CartRepo}
 
-case class ProductFormInput(price: Double, title: String, description: String)
+case class ProductFormInput(price: Double, title: String, description: String, category_id: Option[Long])
 
 @Singleton
 class ProductController @Inject() (
     val controllerComponents: ControllerComponents,
-    productRepo: ProductRepo
+    productRepo: ProductRepo,
+    cartRepo: CartRepo
 ) extends BaseController {
 
   implicit val productFormat = Json.format[Product]
@@ -24,7 +25,8 @@ class ProductController @Inject() (
     mapping(
       "price" -> of[Double].verifying("error.price.positive", _ > 0),
       "title" -> nonEmptyText.verifying(maxLength(100)),
-      "description" -> text
+      "description" -> text,
+      "category_id" -> optional(longNumber)
     )(ProductFormInput.apply)(ProductFormInput.unapply)
   )
 
@@ -49,7 +51,8 @@ class ProductController @Inject() (
         val newProduct = productRepo.create(
           product.price,
           product.title,
-          product.description
+          product.description,
+          product.category_id
         )
 
         Ok(Json.toJson(newProduct))
@@ -62,7 +65,13 @@ class ProductController @Inject() (
     productForm.bindFromRequest.fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       product => {
-        productRepo.update(id, product.price, product.title, product.description) match {
+        productRepo.update(
+            id, 
+            product.price,
+            product.title, 
+            product.description,
+            product.category_id
+          ) match {
           case Some(updatedProduct) => Ok(Json.toJson(updatedProduct))
           case None => NotFound(s"Product not found")
         }
@@ -72,6 +81,8 @@ class ProductController @Inject() (
 
   // DELETE /products/:id
   def delete(id: Long): Action[AnyContent] = Action {
+    cartRepo._removeProductFromAllCarts(id)
+
     if (productRepo.delete(id)) {
         Ok
     } else {
