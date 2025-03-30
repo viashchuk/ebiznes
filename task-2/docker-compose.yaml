@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - "8000:9000"
+    volumes:
+      - ./:/task-2
   ngrok:
     image: ngrok/ngrok:latest
     command:
