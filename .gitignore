@@ -1,0 +1,5 @@
+# Visual Studio Code
+.vscode
+.metals
+.scalafmt.conf
+.DS_Store
