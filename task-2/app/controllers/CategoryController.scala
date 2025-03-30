@@ -8,6 +8,7 @@ import play.api.data.Forms._
 import play.api.data.format.Formats._
 import play.api.data.validation.Constraints._
 import play.api.libs.json.Json
+import play.api.libs.json._
 import models.{Category, CategoryRepo}
 
 case class CategoryFormInput(title: String)
@@ -18,7 +19,7 @@ class CategoryController @Inject() (
     categoryRepo: CategoryRepo
 ) extends BaseController {
 
-  implicit val categoryFormat = Json.format[Category]
+  implicit val categoryFormat: OFormat[Category] = Json.format[Category]
 
   private val categoryForm: Form[CategoryFormInput] = Form(
     mapping(
@@ -41,7 +42,7 @@ class CategoryController @Inject() (
 
   // POST /categories
   def create: Action[AnyContent] = Action { implicit request =>
-    categoryForm.bindFromRequest.fold(
+    categoryForm.bindFromRequest().fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       category => {
         val newCategory = categoryRepo.create(
@@ -55,7 +56,7 @@ class CategoryController @Inject() (
 
   // PUT /categories/:id
   def update(id: Long): Action[AnyContent] = Action { implicit request =>
-    categoryForm.bindFromRequest.fold(
+    categoryForm.bindFromRequest().fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       category => {
         categoryRepo.update(id, category.title) match {

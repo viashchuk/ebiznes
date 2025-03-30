@@ -8,6 +8,7 @@ import play.api.data.Forms._
 import play.api.data.format.Formats._
 import play.api.data.validation.Constraints._
 import play.api.libs.json.Json
+import play.api.libs.json._
 import models.{Cart, CartRepo}
 
 case class CartFormInput(product_id: Long, amount: Int)
@@ -18,7 +19,7 @@ class CartController @Inject() (
     cartRepo: CartRepo
 ) extends BaseController {
 
-  implicit val cartFormat = Json.format[Cart]
+  implicit val cartFormat: OFormat[Cart] = Json.format[Cart]
 
   private val cartForm: Form[CartFormInput] = Form(
     mapping(
@@ -43,7 +44,7 @@ class CartController @Inject() (
 
   // POST /carts
   def create: Action[AnyContent] = Action { implicit request =>
-    cartForm.bindFromRequest.fold(
+    cartForm.bindFromRequest().fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       cart => {
         val newCart = cartRepo.create(
@@ -58,7 +59,7 @@ class CartController @Inject() (
 
   // PUT /carts/:id
   def update(id: Long): Action[AnyContent] = Action { implicit request =>
-    cartForm.bindFromRequest.fold(
+    cartForm.bindFromRequest().fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       cart => {
         cartRepo.update(id, cart.product_id, cart.amount: Int) match {

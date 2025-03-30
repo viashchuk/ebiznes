@@ -8,6 +8,7 @@ import play.api.data.Forms._
 import play.api.data.format.Formats._
 import play.api.data.validation.Constraints._
 import play.api.libs.json.Json
+import play.api.libs.json._
 import models.{ProductRepo, Product, CartRepo}
 
 case class ProductFormInput(price: Double, title: String, description: String, category_id: Option[Long])
@@ -19,7 +20,7 @@ class ProductController @Inject() (
     cartRepo: CartRepo
 ) extends BaseController {
 
-  implicit val productFormat = Json.format[Product]
+  implicit val productFormat: OFormat[Product] = Json.format[Product]
 
   private val productForm: Form[ProductFormInput] = Form(
     mapping(
@@ -45,7 +46,7 @@ class ProductController @Inject() (
 
   // POST /products
   def create: Action[AnyContent] = Action { implicit request =>
-    productForm.bindFromRequest.fold(
+    productForm.bindFromRequest().fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       product => {
         val newProduct = productRepo.create(
@@ -62,7 +63,7 @@ class ProductController @Inject() (
 
   // PUT /products/:id
   def update(id: Long): Action[AnyContent] = Action { implicit request =>
-    productForm.bindFromRequest.fold(
+    productForm.bindFromRequest().fold(
       formWithErrors => handleValidationErrors(formWithErrors),
       product => {
         productRepo.update(

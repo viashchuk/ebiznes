@@ -7,7 +7,7 @@ import scala.collection.mutable.ListBuffer
 class CategoryRepo @Inject() () {
 
   private val categories = ListBuffer(
-    Category(1, "phones"),
+    Category(1, "phones")
   )
 
   def all: Seq[Category] = categories.toSeq
