@@ -14,6 +14,7 @@
 
 
 Kod: [Docker](./task-1)
+
 Docker Hub: [viktoriiaiashchuk/task-1](https://hub.docker.com/r/viktoriiaiashchuk/task-1)
 
 
@@ -28,3 +29,6 @@ Docker Hub: [viktoriiaiashchuk/task-1](https://hub.docker.com/r/viktoriiaiashchu
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/bd98a9e2adc709ef6871f0d9ddb4e8f6231dcd62)
 
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/5fe6a3cbcfcd72190b2869f224461e08356e6aca)
+
+
+Kod: [Scala](./task-2)
