@@ -10,6 +10,7 @@ import play.api.data.validation.Constraints._
 import play.api.libs.json.Json
 import play.api.libs.json._
 import models.{Category, CategoryRepo}
+import scala.concurrent.{ExecutionContext, Future}
 
 case class CategoryFormInput(title: String)
 
@@ -17,9 +18,10 @@ case class CategoryFormInput(title: String)
 class CategoryController @Inject() (
     val controllerComponents: ControllerComponents,
     categoryRepo: CategoryRepo
-) extends BaseController {
+)(implicit ec: ExecutionContext) extends BaseController {
 
   implicit val categoryFormat: OFormat[Category] = Json.format[Category]
+  implicit val categoryFormInput: OFormat[CategoryFormInput] = Json.format[CategoryFormInput]
 
   private val categoryForm: Form[CategoryFormInput] = Form(
     mapping(
@@ -28,8 +30,8 @@ class CategoryController @Inject() (
   )
 
   // GET /categories
-  def index: Action[AnyContent] = Action {
-    Ok(Json.toJson(categoryRepo.all))
+  def index: Action[AnyContent] = Action.async {
+    categoryRepo.all.map(categories => Ok(Json.toJson(categories)))
   }
 
   // GET /categories/:id

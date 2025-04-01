@@ -1,55 +1,55 @@
 package models
 
 import javax.inject.{Inject, Singleton}
-import scala.collection.mutable.ListBuffer
+import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
+import slick.jdbc.JdbcProfile
+import slick.jdbc.H2Profile.api._
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class CategoryRepo @Inject() () {
+class CategoryRepo @Inject() (
+    protected val dbConfigProvider: DatabaseConfigProvider
+)(implicit ec: ExecutionContext)
+    extends HasDatabaseConfigProvider[JdbcProfile] {
 
-  private val categories = ListBuffer(
-    Category(1, "phones")
-  )
+  class CategoriesTable(tag: Tag) extends Table[Category](tag, "CATEGORY") {
+    def id = column[Long]("ID", O.AutoInc, O.PrimaryKey)
+    def title = column[String]("TITLE")
 
-  def all: Seq[Category] = categories.toSeq
-
-  def findById(id: Long): Option[Category] = categories.find(_.id == id)
-
-  def create(title: String) : Category = {
-    val newId = if (categories.nonEmpty) categories.map(_.id).max + 1 else 1L
-
-    val newCategory = Category(
-      newId,
+    def * = (
+      id,
       title
-    )
-    categories += newCategory
-    newCategory
+    ) <> (Product.tupled, Product.unapply)
+  }
+
+  private val categories = TableQuery[CategoriesTable]
+
+  def all: Future[Seq[Category]] = db.run {
+    categories.result
+  }
+
+  def findById(id: Long): Future[Option[Category]] = db.run {
+    categories.filter(_.id === id).result.headOption
+  }
+
+  def create(title: String): Future[Long] = {
+    val category = Category(0L, title)
+    db.run(products returning products.map(_.id) += product)
   }
 
   def update(
       id: Long,
       title: String
-  ): Option[Category] = {
+  ): Future[Option[Long]] = {
 
-    if (categories.exists(_.id == id)) {
+    val category = Category(id, title)
 
-      val currentCategory = categories.indexWhere(_.id == id)
-      val updatedCategory = Category(
-        id,
-        title
-      )
-      categories.update(currentCategory, updatedCategory)
-
-      Some(updatedCategory)
-    } else {
-      None
-    }
+    db.run(categories.filter(_.id === id).update(category).map { affectedRows =>
+      if (affectedRows > 0) Some(id) else None
+    })
   }
 
-  def delete(id: Long): Boolean = {
-    categories.find(_.id == id).fold(false) { category =>
-      // productRepo.resetCategoryForProducts(id)
-      categories -= category
-      !categories.exists(_.id == id)
-    }
+  def delete(id: Long): Future[Boolean] = db.run {
+    categories.filter(_.id === id).delete.map(_ > 0)
   }
 }

@@ -1,1 +1,4 @@
 # https://www.playframework.com/documentation/latest/ScalaI18N
+
+
+product.created = You have successfully added a product!

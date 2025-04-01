@@ -1,49 +1,61 @@
 package models
 
 import javax.inject.{Inject, Singleton}
-import scala.collection.mutable.ListBuffer
+import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
+import slick.jdbc.JdbcProfile
+import slick.jdbc.H2Profile.api._
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class ProductRepo @Inject() () {
+class ProductRepo @Inject() (
+    protected val dbConfigProvider: DatabaseConfigProvider
+)(implicit ec: ExecutionContext) extends HasDatabaseConfigProvider[JdbcProfile] {
 
-  private val products = ListBuffer(
-    Product(
-      1,
-      5000.0,
-      "iPhone 16",
-      "Smartfon APPLE iPhone 16 5G 256GB 6.1 Czarny",
-      Some(1L)
-    ),
-    Product(
-      2,
-      3000.0,
-      "iPhone 12",
-      "Smartfon APPLE iPhone 12 5G 128GB 6.1 Czarny MGJA3PM/A",
-      Some(1L)
-    )
-  )
+  class ProductsTable(tag: Tag) extends Table[Product](tag, "PRODUCT") {
+    def id = column[Long]("ID", O.AutoInc, O.PrimaryKey)
+    def price = column[Double]("PRICE")
+    def title = column[String]("TITLE")
+    def description = column[String]("DESCRIPTION")
+    def category_id = column[Option[Long]]("CATEGORY_ID")
 
-  def all: Seq[Product] = products.toSeq
+    // def categoryFk =
+    //   foreignKey("category_fk", category_id, TableQuery[CategoryTable])(_.id.?)
 
-  def findById(id: Long): Option[Product] = products.find(_.id == id)
+    def * = (
+      id,
+      price,
+      title,
+      description,
+      category_id
+    ) <> (Product.tupled, Product.unapply)
+  }
+
+  // private class CategoriesTable(tag: Tag) extends Table[Category](tag, "CATEGORY") {
+  //   def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
+  //   def title = column[String]("TITLE")
+    
+  //   def * = (id, title) <> (Category.tupled, Category.unapply)
+  // }
+
+  private val products = TableQuery[ProductsTable]
+  // private val categories = TableQuery[CategoriesTable]
+
+  def all: Future[Seq[Product]] = db.run {
+    products.result
+  }
+
+  def findById(id: Long): Future[Option[Product]] = db.run {
+    products.filter(_.id === id).result.headOption
+  }
 
   def create(
       price: Double,
       title: String,
       description: String,
       category_id: Option[Long]
-  ): Product = {
-    val newId = if (products.nonEmpty) products.map(_.id).max + 1 else 1L
-
-    val newProduct = Product(
-      newId,
-      price,
-      title,
-      description,
-      category_id
-    )
-    products += newProduct
-    newProduct
+  ): Future[Long] = {
+    val product = Product(0L, price, title, description, category_id)
+    db.run(products returning products.map(_.id) += product)
   }
 
   def update(
@@ -52,30 +64,16 @@ class ProductRepo @Inject() () {
       title: String,
       description: String,
       category_id: Option[Long]
-  ): Option[Product] = {
+  ): Future[Option[Long]] = {
 
-    if (products.exists(_.id == id)) {
-
-      val currentProduct = products.indexWhere(_.id == id)
-      val updatedProduct = Product(
-        id,
-        price,
-        title,
-        description,
-        category_id
-      )
-      products.update(currentProduct, updatedProduct)
-
-      Some(updatedProduct)
-    } else {
-      None
-    }
+    val product = Product(id, price, title, description, category_id)
+    
+    db.run(products.filter(_.id === id).update(product).map { affectedRows =>
+      if (affectedRows > 0) Some(id) else None
+    })
   }
 
-  def delete(id: Long): Boolean = {
-    products.find(_.id == id).fold(false) { product =>
-      products -= product
-      !products.exists(_.id == id)
-    }
+  def delete(id: Long): Future[Boolean] = db.run {
+    products.filter(_.id === id).delete.map(_ > 0)
   }
 }
