@@ -10,3 +10,7 @@
 ## Docker Hub
 
 - [viktoriiaiashchuk/task-1](https://hub.docker.com/r/viktoriiaiashchuk/task-1)
+
+## Demo
+
+https://github.com/user-attachments/assets/d569b553-b356-4273-818b-ffdb2da4e674
