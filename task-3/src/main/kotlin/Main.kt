@@ -8,10 +8,10 @@ import com.typesafe.config.ConfigFactory
 suspend fun main() {
     val config = ConfigFactory.load()
     val bot_token:String = config.getString("discord.botToken")
-    val chanel_id:String = config.getString("discord.chanelID")
+    val channel_id:String = config.getString("discord.channelID")
 
     val client = HttpClient(CIO)
-    val response: HttpResponse = client.post("https://discord.com/api/v10/channels/$chanel_id/messages") {
+    val response: HttpResponse = client.post("https://discord.com/api/v10/channels/$channel_id/messages") {
         contentType(ContentType.Application.Json)
         headers {
             append(HttpHeaders.Authorization, "Bot $bot_token")
