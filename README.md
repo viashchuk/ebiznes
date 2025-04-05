@@ -37,7 +37,7 @@ Kod: [Scala](./task-2)
 
 **Zadanie 3** Kotlin
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:x: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/5489132a053c9901a1f0ce6e530f61db81efda6a)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
