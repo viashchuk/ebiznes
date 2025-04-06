@@ -4,20 +4,14 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import com.typesafe.config.ConfigFactory
+import services.ChatBotFactory
 
 suspend fun main() {
     val config = ConfigFactory.load()
-    val bot_token:String = config.getString("discord.botToken")
-    val channel_id:String = config.getString("discord.channelID")
+    val botType: String = "discord"
+    val botToken: String = config.getString("$botType.botToken")
+    val channelId: String = config.getString("$botType.channelID")
 
-    val client = HttpClient(CIO)
-    val response: HttpResponse = client.post("https://discord.com/api/v10/channels/$channel_id/messages") {
-        contentType(ContentType.Application.Json)
-        headers {
-            append(HttpHeaders.Authorization, "Bot $bot_token")
-        }
-        setBody("""{"content": "Hello, World!"}""")
-    }
-    println(response.status)
-    client.close()
+    val bot = ChatBotFactory.createChatBot(botType, botToken, channelId)
+    bot.run()
 }
