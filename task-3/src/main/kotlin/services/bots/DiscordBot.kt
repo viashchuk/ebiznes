@@ -3,7 +3,6 @@ package services.bots
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
-import io.ktor.client.request.headers
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import services.IChatBot
@@ -14,6 +13,7 @@ import dev.kord.gateway.Intent
 import dev.kord.gateway.PrivilegedIntent
 import dev.kord.core.entity.channel.TextChannel
 import dev.kord.common.entity.Snowflake
+import entities.categoryStorage
 
 class DiscordBot(private val botToken: String, private val channelId: String) : IChatBot {
     private lateinit var kord: Kord
@@ -26,8 +26,16 @@ class DiscordBot(private val botToken: String, private val channelId: String) : 
         kord.on<MessageCreateEvent> {
             if (message.author?.isBot != false) return@on
 
-            if (message.content.startsWith('!')) {
-                println(message.content)
+            val content = message.content
+
+            when {
+                content.startsWith("!categories", ignoreCase = true) -> {
+                    sendCategories(message.channel.id)
+                }
+
+                content.startsWith("!") -> {
+                    message.channel.createMessage("Unknown command")
+                }
             }
         }
 
@@ -41,5 +49,13 @@ class DiscordBot(private val botToken: String, private val channelId: String) : 
         val channel = kord.getChannelOf<TextChannel>(Snowflake(channelId))
         channel?.createMessage(message)
             ?: println("Channel $channelId not found")
+    }
+
+    private suspend fun sendCategories(channelId: Snowflake) {
+        val channel = kord.getChannelOf<TextChannel>(channelId)
+
+        val message = "Categories:\n" + categoryStorage.joinToString("\n") { "- ${it.title}" }
+
+        channel?.createMessage(message)
     }
 }
