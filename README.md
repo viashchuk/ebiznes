@@ -43,7 +43,7 @@ Kod: [Scala](./task-2)
 
 :x: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ebiznes/commit/d0d73b9ffb9062111e8cd04617bca28927cce61e)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:x: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/de5dad88ed18a67ebb8003d468aa41bcfa8e135f)
 
 :x: 5.0 wymaganie 5 [Link do commita 5]()
 
