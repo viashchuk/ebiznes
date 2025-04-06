@@ -11,9 +11,6 @@ import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.on
 import dev.kord.gateway.Intent
 import dev.kord.gateway.PrivilegedIntent
-import dev.kord.core.entity.channel.TextChannel
-import dev.kord.common.entity.Snowflake
-import entities.categoryStorage
 
 class DiscordBot(private val botToken: String, private val channelId: String) : IChatBot {
     private lateinit var kord: Kord
@@ -21,21 +18,20 @@ class DiscordBot(private val botToken: String, private val channelId: String) : 
     override suspend fun run() {
         kord = Kord("$botToken")
 
-        sendMessage("hello", channelId)
-
         kord.on<MessageCreateEvent> {
             if (message.author?.isBot != false) return@on
 
             val content = message.content
 
             when {
-                content.startsWith("!categories", ignoreCase = true) -> {
-                    sendCategories(message.channel.id)
+                content.startsWith("!bot") -> message.channel.createMessage("Hi!")
+                content.startsWith("!categories") -> message.channel.createMessage(getCategories())
+                content.startsWith("!category") -> {
+                    val requestedCategory = content.split(" ").drop(1).joinToString("_").lowercase()
+                    message.channel.createMessage(getProductsByCategory(requestedCategory))
                 }
 
-                content.startsWith("!") -> {
-                    message.channel.createMessage("Unknown command")
-                }
+                content.startsWith("!") -> message.channel.createMessage("Unknown command")
             }
         }
 
@@ -43,19 +39,5 @@ class DiscordBot(private val botToken: String, private val channelId: String) : 
             @OptIn(PrivilegedIntent::class)
             intents += Intent.MessageContent
         }
-    }
-
-    override suspend fun sendMessage(message: String, channelId: String) {
-        val channel = kord.getChannelOf<TextChannel>(Snowflake(channelId))
-        channel?.createMessage(message)
-            ?: println("Channel $channelId not found")
-    }
-
-    private suspend fun sendCategories(channelId: Snowflake) {
-        val channel = kord.getChannelOf<TextChannel>(channelId)
-
-        val message = "Categories:\n" + categoryStorage.joinToString("\n") { "- ${it.title}" }
-
-        channel?.createMessage(message)
     }
 }
