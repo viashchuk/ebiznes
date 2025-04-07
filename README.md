@@ -45,7 +45,7 @@ Kod: [Scala](./task-2)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/de5dad88ed18a67ebb8003d468aa41bcfa8e135f)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/2a2774af3d3e41005239713be7b17c62c8dead3e)
 
 
 Kod: [Scala](./task-3)
