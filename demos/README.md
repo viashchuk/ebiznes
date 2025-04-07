@@ -4,5 +4,10 @@
 
 https://github.com/user-attachments/assets/d569b553-b356-4273-818b-ffdb2da4e674
 
+## Scala
 https://github.com/user-attachments/assets/ebb8b3b4-ca0a-4078-8bf2-b65d43737fad
+
+## Kotlin
+
+https://github.com/user-attachments/assets/f7b2aed3-840e-4884-8c3f-caee8dfc2aa7
 
