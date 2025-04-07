@@ -48,4 +48,4 @@ Kod: [Scala](./task-2)
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/2a2774af3d3e41005239713be7b17c62c8dead3e)
 
 
-Kod: [Scala](./task-3)
+Kod: [Kotlin](./task-3)
