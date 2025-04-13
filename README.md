@@ -49,3 +49,20 @@ Kod: [Scala](./task-2)
 
 
 Kod: [Kotlin](./task-3)
+
+
+
+**Zadanie 4** Go
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/f82ec698f54ae65e7c236c537ab2fa1071f2f2a1)
+
+:x: 3.5 wymaganie 2 [Link do commita 2]()
+
+:x: 4.0 wymaganie 3 [Link do commita 3]()
+
+:x: 4.5 wymaganie 4 [Link do commita 4]()
+
+:x: 5.0 wymaganie 5 [Link do commita 5]()
+
+
+Kod: [Kotlin](./task-4)
