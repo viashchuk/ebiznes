@@ -73,3 +73,17 @@ func (c *Controller) DeleteProduct(ctx echo.Context) error {
 
 	return ctx.NoContent(http.StatusNoContent)
 }
+
+func (c *Controller) GetProductsByCategory(ctx echo.Context) error {
+	categoryID, err := utils.ParseID(ctx)
+	if err != nil {
+		return utils.ErrorResponse(ctx, http.StatusNotFound, err)
+	}
+
+	products, err := c.repo.GetProductsByCategoryID(categoryID)
+	if err != nil {
+		utils.ErrorResponse(ctx, http.StatusNotFound, err)
+	}
+
+	return ctx.JSON(http.StatusOK, products)
+}
