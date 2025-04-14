@@ -6,8 +6,8 @@ import (
 
 func (s *Seed) SeedCartItems() {
 	cartItems := []models.Cart{
-		{ProductID: 1, Quantity: 2},
-		{ProductID: 2, Quantity: 1},
+		{ProductID: 1, Quantity: 2, CustomerID: 1},
+		{ProductID: 2, Quantity: 1, CustomerID: 2},
 	}
 
 	for _, cartItem := range cartItems {

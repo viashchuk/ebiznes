@@ -13,7 +13,7 @@ func InitDB() *gorm.DB {
 		panic("failed to connect database")
 	}
 
-	db.AutoMigrate(&models.Product{}, &models.Cart{}, &models.Category{})
+	db.AutoMigrate(&models.Product{}, &models.Cart{}, &models.Category{}, &models.Merchant{}, &models.Customer{})
 
 	return db
 }

@@ -14,9 +14,11 @@ func main() {
 	db := db.InitDB()
 
 	s := seeds.Seed{DB: db}
+	s.SeedCustomers()
+	s.SeedMerchants()
+	s.SeedCategories()
 	s.SeedProducts()
 	s.SeedCartItems()
-	s.SeedCategories()
 
 	e := echo.New()
 
