@@ -16,7 +16,6 @@ func main() {
 	s := seeds.Seed{DB: db}
 	s.SeedProducts()
 	s.SeedCartItems()
-	s.SeedCategories()
 
 	e := echo.New()
 

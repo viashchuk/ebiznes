@@ -52,11 +52,3 @@ func (r *Repository) DeleteProduct(id int) error {
 	}
 	return r.DB.Delete(product).Error
 }
-
-func (r *Repository) GetProductsByCategoryID(c_id int) ([]models.Product, error) {
-	var products []models.Product
-
-	r.DB.Where("category_id = ?", c_id).Preload("Category").Find(&products)
-
-	return products, nil
-}
