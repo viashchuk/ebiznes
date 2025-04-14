@@ -65,4 +65,4 @@ Kod: [Kotlin](./task-3)
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/70fb2569730f125356a9132826f675e166b5045d)
 
 
-Kod: [Kotlin](./task-4)
+Kod: [Go](./task-4)
