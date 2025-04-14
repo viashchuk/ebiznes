@@ -15,6 +15,7 @@ func main() {
 
 	s := seeds.Seed{DB: db}
 	s.SeedProducts()
+	s.SeedCartItems()
 
 	e := echo.New()
 
