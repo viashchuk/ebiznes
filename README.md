@@ -60,7 +60,7 @@ Kod: [Kotlin](./task-3)
 
 :white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ebiznes/commit/e5bb35c745f1f836d69b1dc0aa15f1945dc413b7)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/6b0866476766896b4dcd72c295588cd317382be4)
 
 :x: 5.0 wymaganie 5 [Link do commita 5]()
 
