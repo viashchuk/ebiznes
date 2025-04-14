@@ -5,9 +5,15 @@ import (
 	"task-4/models"
 )
 
-func (r *Repository) GetProducts() ([]models.Product, error) {
+func (r *Repository) GetProducts(onlyInStock bool) ([]models.Product, error) {
 	var products []models.Product
-	err := r.DB.Find(&products).Error
+	query := r.DB.Preload("Category")
+
+	if onlyInStock {
+		query = query.Scopes(models.InStock)
+	}
+
+	err := query.Find(&products).Error
 	return products, err
 }
 

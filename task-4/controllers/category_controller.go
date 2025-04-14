@@ -10,7 +10,9 @@ import (
 )
 
 func (c *Controller) GetCategories(ctx echo.Context) error {
-	categories, err := c.repo.GetCategories()
+	withProducts := ctx.QueryParam("with_products") == "true"
+
+	categories, err := c.repo.GetCategories(withProducts)
 	if err != nil {
 		return ctx.JSON(http.StatusNotFound, echo.Map{"error": err.Error()})
 	}

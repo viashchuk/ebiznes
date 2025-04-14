@@ -5,9 +5,15 @@ import (
 	"task-4/models"
 )
 
-func (r *Repository) GetCategories() ([]models.Category, error) {
+func (r *Repository) GetCategories(withProductsOnly bool) ([]models.Category, error) {
 	var categories []models.Category
-	err := r.DB.Preload("Products").Find(&categories).Error
+	query := r.DB
+
+	if withProductsOnly {
+		query = query.Scopes(models.WithProducts)
+	}
+
+	err := query.Preload("Products").Find(&categories).Error
 	return categories, err
 }
 

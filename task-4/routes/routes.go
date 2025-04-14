@@ -22,7 +22,7 @@ func SetupRoutes(e *echo.Echo, c *controllers.Controller) {
 
 	e.GET("/categories", c.GetCategories)
 	e.GET("/categories/:id", c.GetCategory)
-	e.POST("/ccategoriesart", c.CreateCategory)
+	e.POST("/categories", c.CreateCategory)
 	e.PUT("/categories/:id", c.UpdateCategory)
 	e.DELETE("/categories/:id", c.DeleteCategory)
 }

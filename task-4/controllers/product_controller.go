@@ -10,7 +10,9 @@ import (
 )
 
 func (c *Controller) GetProducts(ctx echo.Context) error {
-	products, err := c.repo.GetProducts()
+	onlyInStock := ctx.QueryParam("in_stock") == "true"
+
+	products, err := c.repo.GetProducts(onlyInStock)
 	if err != nil {
 		return ctx.JSON(http.StatusNotFound, echo.Map{"error": err.Error()})
 	}

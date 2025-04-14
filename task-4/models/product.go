@@ -12,3 +12,7 @@ type Product struct {
 	CategoryID uint     `json:"category_id"`
 	Category   Category `json:"-"`
 }
+
+func InStock(db *gorm.DB) *gorm.DB {
+	return db.Where("amount > ?", 0)
+}
