@@ -69,9 +69,9 @@ Kod: [Go](./task-4)
 
 
 
-**Zadanie 4** React - Frontend
+**Zadanie 5** React - Frontend
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/7e85e42188b0cf04757d3cd22eb9743543d5bb0d)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
