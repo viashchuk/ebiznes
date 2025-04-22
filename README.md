@@ -77,9 +77,9 @@ Kod: [Go](./task-4)
 
 :white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ebiznes/commit/fa033a249e211bee03fd4667bf20c784f40af558)
 
-:white_check_markx: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/fd20c35e2452ababf80eda06fea6b30d1b1df536)
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/fd20c35e2452ababf80eda06fea6b30d1b1df536)
 
-:white_check_markx: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/94fed676d51b6f80e852a5a5fd3230a1c72c486a)
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/94fed676d51b6f80e852a5a5fd3230a1c72c486a)
 
 
 Kod: [React - Frontend](./task-5)
