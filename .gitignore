@@ -3,3 +3,4 @@
 .metals
 .scalafmt.conf
 .DS_Store
+./task-5/*
