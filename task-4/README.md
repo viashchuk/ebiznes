@@ -1,5 +1,5 @@
 
-# Task - 3: Go
+# Task - 4: Go
 
 - 3.0 It is necessary to create an application in the Echo framework in Go, which will have a Products controller compliant with CRUD: [Commit](https://github.com/viashchuk/ebiznes/commit/f82ec698f54ae65e7c236c537ab2fa1071f2f2a1)
 - 3.5 It is necessary to create a Products model using GORM and use the model to handle products (CRUD) in the controller (instead of a list): [Commit](https://github.com/viashchuk/ebiznes/commit/22aac50c27bdde9d702c1f304f3e829fb570bf14)
