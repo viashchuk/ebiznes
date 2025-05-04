@@ -30,7 +30,7 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-de"]').click()
-    cy.get('button').should('contain', 'DE')
+    cy.get('button').contains('DE')
     cy.contains('Sortieren')
   })
 
@@ -39,7 +39,7 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-en"]').click()
-    cy.get('button').should('contain', 'EN')
+    cy.get('button').contains('EN')
     cy.contains('Sort')
   })
 
@@ -48,7 +48,7 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-es"]').click()
-    cy.get('button').should('contain', 'ES')
+    cy.get('button').contains('ES')
     cy.contains('Ordenar')
   })
 
@@ -57,7 +57,7 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-fr"]').click()
-    cy.get('button').should('contain', 'FR')
+    cy.get('button').contains('FR')
     cy.contains('Trier')
   })
 
@@ -66,7 +66,7 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-nl"]').click()
-    cy.get('button').should('contain', 'NL')
+    cy.get('button').contains('NL')
     cy.contains('Sorteren')
   })
 
@@ -75,7 +75,7 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-tr"]').click()
-    cy.get('button').should('contain', 'TR')
+    cy.get('button').contains('TR')
     cy.contains('Sırala')
   })
 
@@ -116,31 +116,46 @@ describe('Search functionality', () => {
 })
 
 
-
 describe('Filters', () => {
+  it('Should filter by Hand Saw category', () => {
+    cy.visit('https://practicesoftwaretesting.com')
 
+    cy.get('[data-test="category-01JTDJP7GS83BQ0EWVP6WM3BYA"]').check()
+    cy.wait(500)
+
+    cy.get('.card-title').contains('Wood Saw')
+  })
+
+  it('Should filter by MightyCraft Hardware brand', () => {
+    cy.visit('https://practicesoftwaretesting.com')
+
+    cy.get('[data-test="brand-01JTDJP7F8YW9TY6ZNHX6N5SHG"]').check()
+    cy.wait(500)
+
+    cy.get('.card-title').contains('Claw Hammer')
+  })
 })
 
 
-
 describe('Product Card', () => {
-  it('Should navigate to Slip Joint Pliers product page', () => {
+  it('Should navigate to Combination Pliers product page', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
-    cy.get('[data-test="product-01JSZ36S4VWB69JYRWAYESACGZ"]').click()
+    cy.get('[data-test="product-01JTDJP7HWXAFENJGJDSKRXYHV"]').click()
 
     cy.url().should('include', '/product/')
-    cy.get('[data-test="product-name"]').should('contain', 'Slip Joint Pliers')
+    cy.get('[data-test="product-name"]').contains('Combination Pliers')
   })
 
   it('Should display correct price for Combination Pliers', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
-    cy.get('[data-test="product-01JSZ36S4J6QR9SRRPEWCX2XKD"]').find('[data-test="product-price"]').should('contain', '$14.15')
+    cy.get('[data-test="product-01JTDJP7HWXAFENJGJDSKRXYHV"]').find('[data-test="product-price"]').contains('$14.15')
   })
 })
 
-describe('Sort by Name Alphabetical', () => {
+
+describe('Sort by', () => {
   it('Should sort products by name alphabetically', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
@@ -157,9 +172,9 @@ describe('Sort by Name Alphabetical', () => {
 
   it('Should sort products by name reverse alphabetically (Z-A)', () => {
     cy.visit('https://practicesoftwaretesting.com')
-  
+
     cy.get('[data-test="sort"]').select('Name (Z - A)')
-  
+
     let names = []
     cy.get('.card').each(($el) => {
       names.push($el.text().trim())
@@ -171,10 +186,11 @@ describe('Sort by Name Alphabetical', () => {
 
   it('Should sort products by price ascending (Low - High)', () => {
     cy.visit('https://practicesoftwaretesting.com')
-  
+
     cy.get('[data-test="sort"]').select('Price (Low - High)')
-  
+
     let prices = []
+    cy.wait(500)
     cy.get('[data-test="product-price"]').each(($el) => {
       const price = parseFloat($el.text().replace('$', '').trim())
       prices.push(price)
@@ -186,10 +202,11 @@ describe('Sort by Name Alphabetical', () => {
 
   it('Should sort products by price descending (High to Low)', () => {
     cy.visit('https://practicesoftwaretesting.com')
-  
+
     cy.get('[data-test="sort"]').select('Price (High - Low)')
-  
+
     let prices = []
+    cy.wait(500)
     cy.get('[data-test="product-price"]').each(($el) => {
       const price = parseFloat($el.text().replace('$', '').trim())
       prices.push(price)
