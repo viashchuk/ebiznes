@@ -9,17 +9,28 @@ describe('Header', () => {
   it('Should display logo and header links', () => {
     cy.visit('https://practicesoftwaretesting.com')
     cy.get('a[title="Practice Software Testing - Toolshop"]').should('be.visible')
+    cy.get('a[title="Practice Software Testing - Toolshop"]').should('have.attr', 'href', '/')
+
     cy.contains('Home').should('be.visible')
+    cy.contains('Home').should('have.class', 'nav-link')
+
     cy.contains('Categories').should('be.visible')
+    cy.contains('Categories').should('have.class', 'nav-link')
+
     cy.contains('Contact').should('be.visible')
+    cy.contains('Contact').should('have.class', 'nav-link')
+
     cy.contains('Sign in').should('be.visible')
+    cy.contains('Sign in').should('have.class', 'nav-link')
+
+    cy.contains('Sign in').should('have.attr', 'href').and('include', '/login')
   })
 
   it('Should display dropdown with links when clicking on сategories', () => {
     cy.visit('https://practicesoftwaretesting.com')
     cy.get('[data-test="nav-categories"]').click()
     cy.get('.navbar-nav > .dropdown > .dropdown-menu').should('be.visible')
-    cy.get('[data-test="nav-hand-tools"]').should('contain.text', 'Hand Tools')
+    cy.get('[data-test="nav-hand-tools"]').contains('Hand Tools')
   })
 })
 
@@ -39,8 +50,8 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-en"]').click()
-    cy.get('button').contains('EN')
-    cy.contains('Sort')
+    cy.get('button').contains('EN').should('exist')
+    cy.contains('Sort').should('exist')
   })
 
   it('Should switch language to ES (Spanish)', () => {
@@ -48,8 +59,8 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-es"]').click()
-    cy.get('button').contains('ES')
-    cy.contains('Ordenar')
+    cy.get('button').contains('ES').should('exist')
+    cy.contains('Ordenar').should('exist')
   })
 
   it('Should switch language to FR (French)', () => {
@@ -57,8 +68,8 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-fr"]').click()
-    cy.get('button').contains('FR')
-    cy.contains('Trier')
+    cy.get('button').contains('FR').should('exist')
+    cy.contains('Trier').should('exist')
   })
 
   it('Should switch language to NL (Dutch)', () => {
@@ -66,8 +77,8 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-nl"]').click()
-    cy.get('button').contains('NL')
-    cy.contains('Sorteren')
+    cy.get('button').contains('NL').should('exist')
+    cy.contains('Sorteren').should('exist')
   })
 
   it('Should switch language to TR (Turkish)', () => {
@@ -75,8 +86,8 @@ describe('Language Switcher', () => {
 
     cy.get('[data-test="language-select"]').click()
     cy.get('[data-test="lang-tr"]').click()
-    cy.get('button').contains('TR')
-    cy.contains('Sırala')
+    cy.get('button').contains('TR').should('exist')
+    cy.contains('Sırala').should('exist')
   })
 
 })
@@ -86,12 +97,16 @@ describe('Search functionality', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
     cy.get('[data-test="search-query"]').type('pliers')
+    cy.get('[data-test="search-query"]').should('have.value', 'pliers')
+
+    cy.get('[data-test="search-submit"]').should('be.enabled')
     cy.get('[data-test="search-submit"]').click()
 
-    cy.contains('Combination Pliers')
-    cy.contains('Pliers')
+    cy.contains('Combination Pliers').should('exist')
+    cy.contains('Pliers').should('exist')
     cy.contains('Long Nose Pliers').should('exist')
     cy.contains('Claw Hammer with Shock Reduction Grip').should('not.exist')
+    cy.get('.card-title').first().contains('Pliers') 
   })
 
   it('Should show no results for nonexistent product', () => {
@@ -109,6 +124,7 @@ describe('Search functionality', () => {
     cy.get('[data-test="search-query"]').type('pliers')
     cy.get('[data-test="search-submit"]').click()
     cy.contains('Combination Pliers')
+    cy.get('[data-test="search-reset"]').should('be.visible')
     cy.get('[data-test="search-reset"]').click()
 
     cy.get('.card').should('have.length.greaterThan', 1)
@@ -121,18 +137,22 @@ describe('Filters', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
     cy.get('[data-test="category-01JTDJP7GS83BQ0EWVP6WM3BYA"]').check()
+    cy.get('[data-test="category-01JTDJP7GS83BQ0EWVP6WM3BYA"]').should('be.checked')
     cy.wait(500)
 
-    cy.get('.card-title').contains('Wood Saw')
+    cy.get('.card').should('exist')   
+    cy.get('.card-title').contains('Wood Saw').should('exist') 
   })
 
   it('Should filter by MightyCraft Hardware brand', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
     cy.get('[data-test="brand-01JTDJP7F8YW9TY6ZNHX6N5SHG"]').check()
+    cy.get('[data-test="brand-01JTDJP7F8YW9TY6ZNHX6N5SHG"]').should('be.checked')
     cy.wait(500)
 
-    cy.get('.card-title').contains('Claw Hammer')
+    cy.get('.card').should('exist')   
+    cy.get('.card-title').contains('Claw Hammer').should('exist') 
   })
 })
 
@@ -145,11 +165,21 @@ describe('Product Card', () => {
 
     cy.url().should('include', '/product/')
     cy.get('[data-test="product-name"]').contains('Combination Pliers')
+    cy.get('[data-test="product-name"]').should('be.visible')
+    cy.get('[data-test="product-description"]').should('exist')
+    cy.get('[alt="Combination Pliers"]')
+          .should('be.visible')
+          .and(($img) => {
+            expect($img[0].naturalWidth).to.be.greaterThan(0)
+          })
   })
 
   it('Should display correct price for Combination Pliers', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
+    cy.get('[data-test="product-name"]').contains('Combination Pliers')
+    cy.get('[data-test="product-name"]').should('be.visible')
+    cy.get('[data-test="product-price"]').should('be.visible')
     cy.get('[data-test="product-01JTDJP7HWXAFENJGJDSKRXYHV"]').find('[data-test="product-price"]').contains('$14.15')
   })
 })
