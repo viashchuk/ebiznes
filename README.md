@@ -88,15 +88,15 @@ Kod: [React - Frontend](./task-5)
 
 **Zadanie 6** Tests
 
-:white_check_mark: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1]( https://github.com/viashchuk/ebiznes/commit/7640dd4c802f83d31d4b5f597d77a0a584913b7f), [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/d64a452314c544dd0ccdbb0e1ff5a10bb16bce74)
 
-:x: 3.5 wymaganie 2 [Link do commita 2]()
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/32aac7cf2f69bd7e54fbd905aad1a534f8e987bc)
 
-:x: 4.0 wymaganie 3 [Link do commita 3]()
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ebiznes/commit/d01cf77e6d654c254af02d6acefca08cbe25a05f)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/5f86125c1300f83731af45fe538876db6443ee21)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/d79acfbe2e858bfad905bce7e8aaaee0346a8544)
 
 
 Kod: [Tests](./task-6)
