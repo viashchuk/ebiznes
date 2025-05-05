@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "cypress": "^14.3.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.5.0"
+  },
+  "scripts": {
+    "browserstack": "browserstack-cypress run --sync --spec cypress/e2e/shop.cy.js"
   }
 }

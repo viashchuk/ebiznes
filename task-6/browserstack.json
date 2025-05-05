@@ -1,0 +1,28 @@
+{
+    "auth": {
+        "username": "${BROWSERSTACK_USERNAME}",
+        "access_key": "${BROWSERSTACK_ACCESS_KEY}"
+    },
+    "browsers": [
+        {
+            "browser": "chrome",
+            "os": "Windows 10",
+            "versions": [
+                "latest"
+            ]
+        }
+    ],
+    "run_settings": {
+        "cypress_config_file": "cypress.config.js",
+        "project_name": "CoffeeShop",
+        "build_name": "build-1",
+        "parallels": "2"
+    },
+    "connection_settings": {
+        "local": false,
+        "local_identifier": null,
+        "local_mode": null,
+        "local_config_file": null
+    },
+    "disable_usage_reporting": false
+}
