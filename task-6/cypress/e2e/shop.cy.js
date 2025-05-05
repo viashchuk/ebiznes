@@ -136,8 +136,8 @@ describe('Filters', () => {
   it('Should filter by Hand Saw category', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
-    cy.get('[data-test="category-01JTDJP7GS83BQ0EWVP6WM3BYA"]').check()
-    cy.get('[data-test="category-01JTDJP7GS83BQ0EWVP6WM3BYA"]').should('be.checked')
+    cy.get('[data-test="category-01JTG52YMJ0ZH5CYPMRW11WFD9"]').check()
+    cy.get('[data-test="category-01JTG52YMJ0ZH5CYPMRW11WFD9"]').should('be.checked')
     cy.wait(500)
 
     cy.get('.card').should('exist')   
@@ -147,8 +147,8 @@ describe('Filters', () => {
   it('Should filter by MightyCraft Hardware brand', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
-    cy.get('[data-test="brand-01JTDJP7F8YW9TY6ZNHX6N5SHG"]').check()
-    cy.get('[data-test="brand-01JTDJP7F8YW9TY6ZNHX6N5SHG"]').should('be.checked')
+    cy.get('[data-test="brand-01JTG52YK49D9B1B7WZ5ZQVB24"]').check()
+    cy.get('[data-test="brand-01JTG52YK49D9B1B7WZ5ZQVB24"]').should('be.checked')
     cy.wait(500)
 
     cy.get('.card').should('exist')   
@@ -161,7 +161,7 @@ describe('Product Card', () => {
   it('Should navigate to Combination Pliers product page', () => {
     cy.visit('https://practicesoftwaretesting.com')
 
-    cy.get('[data-test="product-01JTDJP7HWXAFENJGJDSKRXYHV"]').click()
+    cy.get('[data-test="product-01JTG52YNVXSE95JS37D3QQ2Q6"]').click()
 
     cy.url().should('include', '/product/')
     cy.get('[data-test="product-name"]').contains('Combination Pliers')
@@ -180,7 +180,7 @@ describe('Product Card', () => {
     cy.get('[data-test="product-name"]').contains('Combination Pliers')
     cy.get('[data-test="product-name"]').should('be.visible')
     cy.get('[data-test="product-price"]').should('be.visible')
-    cy.get('[data-test="product-01JTDJP7HWXAFENJGJDSKRXYHV"]').find('[data-test="product-price"]').contains('$14.15')
+    cy.get('[data-test="product-01JTG52YNVXSE95JS37D3QQ2Q6"]').find('[data-test="product-price"]').contains('$14.15')
   })
 })
 
@@ -192,6 +192,7 @@ describe('Sort by', () => {
     cy.get('[data-test="sort"]').select('Name (A - Z)')
 
     let names = []
+    cy.wait(500)
     cy.get('.card').each(($el) => {
       names.push($el.text().trim())
     }).then(() => {
@@ -206,6 +207,7 @@ describe('Sort by', () => {
     cy.get('[data-test="sort"]').select('Name (Z - A)')
 
     let names = []
+    cy.wait(500)
     cy.get('.card').each(($el) => {
       names.push($el.text().trim())
     }).then(() => {
