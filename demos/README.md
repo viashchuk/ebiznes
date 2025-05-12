@@ -4,12 +4,16 @@
 
 https://github.com/user-attachments/assets/d569b553-b356-4273-818b-ffdb2da4e674
 
+
 ## Scala
+
 https://github.com/user-attachments/assets/ebb8b3b4-ca0a-4078-8bf2-b65d43737fad
+
 
 ## Kotlin
 
 https://github.com/user-attachments/assets/f7b2aed3-840e-4884-8c3f-caee8dfc2aa7
+
 
 ## Go
 
@@ -24,4 +28,12 @@ https://github.com/user-attachments/assets/ac36958e-929c-4626-b6b8-8cb5a948a541
 ## Tests
 
 https://github.com/user-attachments/assets/60e3ddd0-9857-4a28-885b-2d1925d291bd
+
+
+## Sonar
+
+https://github.com/user-attachments/assets/281bd096-62fd-4f64-83c5-9c6bf97e3712
+
+
+
 
