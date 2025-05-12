@@ -10,3 +10,8 @@
 - 4.0 All code smells in the code must be eliminated in Sonar (server application code): [Commit](https://github.com/viashchuk/ebiznes/commit/d61b2ad32835ea836c0284525750171000e76556)
 - 4.5 All vulnerabilities and security errors in the code must be eliminated in Sonar (server application code): [Commit](https://github.com/viashchuk/ebiznes/commit/d61b2ad32835ea836c0284525750171000e76556)
 - 5.0 All errors and code smells in the client application code must be eliminated: [Commit](https://github.com/viashchuk/ebiznes/commit/d32dd59c724081b1f6d91eec7fe59c5c253abbff)
+
+
+# Demo
+
+https://github.com/user-attachments/assets/281bd096-62fd-4f64-83c5-9c6bf97e3712
