@@ -106,7 +106,7 @@ Kod: [Tests](./task-6)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/a81cf52c7fd30cda06468aa123683a91fa7974a8)
 
-:x: 3.5 wymaganie 2 [Link do commita 2]()
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/a5036e9301768b1f1ed73f6f24878424219a45ca)
 
 :x: 4.0 wymaganie 3 [Link do commita 3]()
 
