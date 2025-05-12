@@ -104,6 +104,8 @@ Kod: [Tests](./task-6)
 
 **Zadanie 7** Sonar
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=viashchuk_server-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=viashchuk_server-app)
+
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/a81cf52c7fd30cda06468aa123683a91fa7974a8)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/a5036e9301768b1f1ed73f6f24878424219a45ca)
