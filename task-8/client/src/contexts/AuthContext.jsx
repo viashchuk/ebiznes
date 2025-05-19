@@ -9,27 +9,36 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         const data = await axios.post('http://localhost:3000/api/login', { email, password })
+        const { token, user } = data.data
 
-        if (data) {
-            setUpToken(data.data.token)
-            setUser(data.data.user)
-        }
+        setUpToken(token)
+        setUser(user)
+
 
         return data
+    }
+
+    const register = async (name, email, password) => {
+        const data = await axios.post('http://localhost:3000/api/register', { name, email, password })
+        const { token, user } = data.data
+
+        setToken(token)
+        setUser(user)
     }
 
     const value = {
         token,
         user,
-        login
+        login,
+        register
     }
 
     const setUpToken = (token) => {
         if (token) {
-            localStorage.setItem("token", token);
+            localStorage.setItem("token", token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         } else {
-            localStorage.removeItem("token");
+            localStorage.removeItem("token")
             axios.defaults.headers.common["Authorization"] = undefined
         }
 
