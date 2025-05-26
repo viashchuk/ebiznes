@@ -18,6 +18,11 @@ export const AuthProvider = ({ children }) => {
         return data
     }
 
+    const loginWithOAuth = (token, user) => {
+        setUpToken(token)
+        setUser(user)
+    }
+
     const register = async (name, email, password) => {
         const data = await axios.post('http://localhost:3000/api/register', { name, email, password })
         const { token, user } = data.data
@@ -30,7 +35,8 @@ export const AuthProvider = ({ children }) => {
         token,
         user,
         login,
-        register
+        register,
+        loginWithOAuth
     }
 
     const setUpToken = (token) => {

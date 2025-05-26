@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router"
+
+import { FcGoogle } from 'react-icons/fc'
+import { FaGithub } from 'react-icons/fa'
+
 import { useAuth } from "../hooks/useAuth"
 
 
@@ -89,8 +93,37 @@ const Login = () => {
                             </button>
                         </div>
 
+                        <div className="mt-6">
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-gray-300"></div>
+                                </div>
+                                <div className="relative flex justify-center text-sm">
+                                    <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                                </div>
+                            </div>
+                        </div>
+
                         {error && <p className="bg-red-50 py-2 px-4 rounded-md text-red-800">Error: {error}</p>}
                     </form>
+                         <div className="mt-6 grid grid-cols-2 gap-3">
+                                <form action="http://localhost:3000/api/oauth/google" method="GET">
+                                    <button
+                                        type="submit"
+                                        className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                    >
+                                        <FcGoogle className="mr-2 text-xl" />
+                                        Google
+                                    </button>
+                                </form>
+                                <button
+                                    type="button"
+                                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                >
+                                    <FaGithub className="mr-2 text-xl" />
+                                    GitHub
+                                </button>
+                            </div>
                 </div>
             </div>
         </>

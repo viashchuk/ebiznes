@@ -10,7 +10,7 @@ const sequelize = new Sequelize({
 })
 
 // { force: true }
-sequelize.sync()
+sequelize.sync({ force: true })
   .then(async () => {
 })
   .catch((err) => console.error('Database sync error:', err))
