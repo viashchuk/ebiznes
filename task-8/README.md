@@ -1,5 +1,5 @@
 
-# Task - 7: Oauth2
+# Task - 8: Oauth2
 
 - 3.0 Logging in through server application (without Oauth2): [Commit](https://github.com/viashchuk/ebiznes/commit/419c41fa80af3e25b9ed18d734e68a788718e5bc)
 - 3.5 Registration through server application (without Oauth2): [Commit](https://github.com/viashchuk/ebiznes/commit/4cc0e8e357073545a5b41a2969e4bad5fc32cae9)
