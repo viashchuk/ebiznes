@@ -40,6 +40,11 @@ https://github.com/user-attachments/assets/281bd096-62fd-4f64-83c5-9c6bf97e3712
 https://github.com/user-attachments/assets/39482c8a-5170-46bf-a770-d4a20a47b16e
 
 
+## Llama Bot
+
+https://github.com/user-attachments/assets/2fef5578-0c70-4e41-81e9-787094c4c1ec
+
+
 
 
 
