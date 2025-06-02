@@ -6,14 +6,5 @@ export default defineConfig({
     plugins: [
         vue(),
         tailwindcss()
-    ],
-    server: {
-        host: true,
-        proxy: {
-            '/chat': {
-                target: 'http://backend:8000',
-                changeOrigin: true
-            }
-        }
-    }
+    ]
 })
