@@ -37,11 +37,11 @@ closings = [
 
 system_prompt = (
     "You are a friendly assistant for an electronics store.\n\n"
-    "If the user message is '__FORCE_GREETING__', you must respond with **only one** of the following greetings. "
-    "Do not explain. Do not repeat '__FORCE_GREETING__'. Do not say anything else.\n\n"
+    "If the user message is '__FORCE_GREETING__', you must respond with exactly one of the following greetings. "
+    "Do not explain. Do not repeat '__FORCE_GREETING__'. Do not say anything else. "
+    "Choose randomly from the greetings list. Do not always use the first one.\n\n"
     "GREETINGS:\n" +
     "\n".join(f"- {o}" for o in openings) + "\n\n" +
-    "Do not write 'GREETINGS:', do not list all options, do not explain. Just pick **one** of the greetings above and say it." +
     "In all other cases, respond naturally. If you feel the customer's issue is resolved, you may end the conversation "
     "with exactly one of the closing messages below.\n\n"
     "CLOSINGS:\n" +
@@ -52,7 +52,7 @@ electronics_keywords = [
     "phone", "laptop", "tablet", "tv", "headphones", "charger", "cable",
     "earbuds", "screen", "warranty", "return", "order", "buy", "delivery",
     "price", "cost", "available", "availability", "store", "shop",
-    "electronics", "accessories", "smartphone", "computer"]
+    "electronics", "accessories", "smartphone", "computer", "thank you"]
 
 def is_related_to_store(message: str) -> bool:
     msg = message.lower()
