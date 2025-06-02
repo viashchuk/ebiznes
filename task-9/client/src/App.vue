@@ -39,11 +39,11 @@ import axios from 'axios'
 
 const messages = ref([])
 const chatWindow = ref(null)
-let isTyping = false
+let isTyping = ref(false)
 
 const sendMessage = async (message) => {
     messages.value.push({ role: 'user', message })
-    isTyping = true
+    isTyping.value = true
 
     try {
         const res = await axios.post('http://localhost:8000/chat', {
@@ -64,7 +64,7 @@ const sendMessage = async (message) => {
             message: 'Error'
         })
     } finally {
-        isTyping = false
+        isTyping.value = false
 
         nextTick(() => {
             chatWindow.value.scrollTop = chatWindow.value.scrollHeight
@@ -73,6 +73,7 @@ const sendMessage = async (message) => {
 }
 
 onMounted(async () => {
+    isTyping.value = true
     try {
         const res = await axios.post('http://localhost:8000/chat', {
             message: ""
@@ -86,6 +87,8 @@ onMounted(async () => {
             role: 'assistant',
             message: "Error"
         })
+    } finally {
+        isTyping.value = false
     }
 })
 </script>
