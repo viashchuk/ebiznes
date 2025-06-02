@@ -141,7 +141,7 @@ Kod: [OAuth2](./task-8)
 
 
 
-**Zadanie 9** ChatGPT bot
+**Zadanie 9** Llama bot
 
 :x: 3.0 wymaganie 1 [Link do commita 1]()
 
@@ -154,4 +154,4 @@ Kod: [OAuth2](./task-8)
 :x: 5.0 wymaganie 5 [Link do commita 5]()
 
 
-Kod: [ChatGPT bot](./task-9)
+Kod: [Llama bot](./task-9)
