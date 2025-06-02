@@ -19,6 +19,10 @@ const User = sequelize.define('User', {
             type: DataTypes.STRING,
             allowNull: true
         },
+        githubToken: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     },
         {
             tableName: 'users'

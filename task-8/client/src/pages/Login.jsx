@@ -116,13 +116,15 @@ const Login = () => {
                                         Google
                                     </button>
                                 </form>
-                                <button
-                                    type="button"
-                                    className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                                >
-                                    <FaGithub className="mr-2 text-xl" />
-                                    GitHub
-                                </button>
+                                <form action="http://localhost:3000/api/oauth/github" method="GET">
+                                    <button
+                                        type="submit"
+                                        className="w-full inline-flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                    >
+                                        <FaGithub className="mr-2 text-xl" />
+                                        GitHub
+                                    </button>
+                                </form>
                             </div>
                 </div>
             </div>
