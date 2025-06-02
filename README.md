@@ -141,9 +141,9 @@ Kod: [OAuth2](./task-8)
 
 
 
-**Zadanie 9** Llama bot
+**Zadanie 9** Llama bot (in progress)
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/76c96e10f612bfcbc7b7ab1ad59d1f04828374d7)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
