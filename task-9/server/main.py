@@ -1,7 +1,8 @@
 from fastapi import FastAPI, Request
 import requests
 from fastapi.middleware.cors import CORSMiddleware
-import random
+from textblob import TextBlob
+
 
 app = FastAPI()
 
@@ -53,10 +54,13 @@ electronics_keywords = [
     "price", "cost", "available", "availability", "store", "shop",
     "electronics", "accessories", "smartphone", "computer"]
 
-
 def is_related_to_store(message: str) -> bool:
     msg = message.lower()
     return any(keyword in msg for keyword in electronics_keywords)
+
+def is_negative_response(text: str) -> bool:
+    blob = TextBlob(text)
+    return blob.sentiment.polarity < -0.1
 
 @app.post("/chat")
 async def chat_with_llama(request: Request):
@@ -83,5 +87,9 @@ async def chat_with_llama(request: Request):
         }
     )
     
-    reply = response.json().get("message", {}).get("content", "[]")
+    reply = response.json().get("message", {}).get("content", "").strip()
+    
+    if is_negative_response(reply):
+        return {"response": "Sorry, something went wrong with the assistant’s response."}
+    
     return {"response": reply}
