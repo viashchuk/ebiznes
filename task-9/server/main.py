@@ -35,7 +35,7 @@ closings = [
 ]
 
 system_prompt = (
-    "You are a shopping assistant.\n"
+    "You are a friendly assistant for an electronics store.\n\n"
     "If the user message is '__FORCE_GREETING__', you must respond with **only one** of the following greetings. "
     "Do not explain. Do not repeat '__FORCE_GREETING__'. Do not say anything else.\n\n"
     "GREETINGS:\n" +
@@ -47,11 +47,27 @@ system_prompt = (
     "\n".join(f"- {c}" for c in closings)
 )
 
+electronics_keywords = [
+    "phone", "laptop", "tablet", "tv", "headphones", "charger", "cable",
+    "earbuds", "screen", "warranty", "return", "order", "buy", "delivery",
+    "price", "cost", "available", "availability", "store", "shop",
+    "electronics", "accessories", "smartphone", "computer"]
+
+
+def is_related_to_store(message: str) -> bool:
+    msg = message.lower()
+    return any(keyword in msg for keyword in electronics_keywords)
+
 @app.post("/chat")
 async def chat_with_llama(request: Request):
     data = await request.json()
     message = data.get("message", "")
-
+    
+    if message and not is_related_to_store(message):
+        return {
+            "response": "I'm sorry, but I can only help with questions related to electronics and our store."
+        }
+        
     response = requests.post(
         "http://host.docker.internal:11434/api/chat",
         json={
