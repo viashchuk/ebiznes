@@ -134,7 +134,7 @@ Kod: [Tests](./task-7)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/bfb359baa6a3608ce66233172a89b484dcccdf48)
 
-:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/d32dd59c724081b1f6d91eec7fe59c5c253abbff)
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/bfb359baa6a3608ce66233172a89b484dcccdf48)
 
 
-Kod: [Tests](./task-7)
+Kod: [OAuth2](./task-8)
