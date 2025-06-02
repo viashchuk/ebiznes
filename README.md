@@ -145,13 +145,13 @@ Kod: [OAuth2](./task-8)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/76c96e10f612bfcbc7b7ab1ad59d1f04828374d7)
 
-:x: 3.5 wymaganie 2 [Link do commita 2]()
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/06c5342879e33cc27f45f84a79d5ec6d75147382)
 
-:x: 4.0 wymaganie 3 [Link do commita 3]()
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ebiznes/commit/a1fa13e9a062d4ba3eb11dfd9476fc0e3d7626ee)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/76f9099911b7037a9791cb6e03e59aa85b792338)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ebiznes/commit/f016a91fa6a9a85ce10c943bb417cb9341afe73a)
 
 
 Kod: [Llama bot](./task-9)
