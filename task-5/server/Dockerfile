@@ -5,9 +5,9 @@ WORKDIR /go-app
 COPY go.mod go.sum ./
 RUN go mod download
 
-RUN go build server.go
-
 COPY . .
+
+RUN go build server.go
 
 EXPOSE 1323
 
