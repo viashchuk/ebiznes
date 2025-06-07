@@ -159,6 +159,8 @@ Kod: [Llama bot](./task-9)
 
 **Zadanie 10** Cloud/CI (in progress)
 
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/80212ee144ca71a85532ceb0b661732d17b381ab)
+
 
 
 
