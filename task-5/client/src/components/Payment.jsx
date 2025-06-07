@@ -31,7 +31,7 @@ const Payment = ({ onOrderCreated }) => {
             }))
         };
 
-        axios.post('http://localhost:1323/orders', order)
+        axios.post('/orders', order)
             .then(res => {
                 clearCart()
                 onOrderCreated(res.data)
