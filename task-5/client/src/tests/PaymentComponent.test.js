@@ -9,13 +9,15 @@ jest.mock('../hooks/useCart', () => ({
 }))
 
 describe('Payment', () => {
-    it('renders form inputs', () => {
+    it('renders form inputs', () => {           
+        const onOrderCreatedMock = jest.fn()
+
         useCart.mockReturnValue({
             cartItems: [],
-            clearCart: jest.fn()
+            clearCart: jest.fn(),
         })
 
-        render(<Payment />)
+        render(<Payment onOrderCreated={onOrderCreatedMock} />)
 
         expect(screen.getByPlaceholderText('Imię')).toBeInTheDocument()
         expect(screen.getByPlaceholderText('Nazwisko')).toBeInTheDocument()
@@ -28,7 +30,8 @@ describe('Payment', () => {
     })
 
     it('fills all fileds and submits form', async () => {
-        const clearCartMock = jest.fn()
+        const clearCartMock = jest.fn()  
+        const onOrderCreatedMock = jest.fn()
 
         useCart.mockReturnValue({
             cartItems: [{ ID: 1, title: 'Kawa', quantity: 2, price: 10 }],
@@ -37,7 +40,7 @@ describe('Payment', () => {
 
         axios.post.mockResolvedValue({ status: 200 })
 
-        render(<Payment />)
+        render(<Payment onOrderCreated={onOrderCreatedMock} />)
 
         fireEvent.change(screen.getByPlaceholderText('Imię'), {
             target: { name: 'customerFirstName', value: 'Anna' }
@@ -95,6 +98,8 @@ describe('Payment', () => {
 
     it('submits order', async () => {
         const clearCartMock = jest.fn()
+        const onOrderCreatedMock = jest.fn()
+
         useCart.mockReturnValue({
             cartItems: [{ ID: 1, quantity: 1 }],
             clearCart: clearCartMock
@@ -102,7 +107,8 @@ describe('Payment', () => {
 
         axios.post.mockResolvedValue({ status: 200 })
 
-        render(<Payment />)
+        render(<Payment  onOrderCreated={onOrderCreatedMock}/>)
+        
 
         fireEvent.change(screen.getByPlaceholderText('Imię'), {
             target: { name: 'customerFirstName', value: 'Jakub' }
