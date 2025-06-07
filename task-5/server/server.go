@@ -20,7 +20,7 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-        AllowOrigins: []string{"http://localhost:5173", "https://ebiznes-backend-lab-c5dpe4aqaxbubxdt.polandcentral-01.azurewebsites.net"},
+        AllowOrigins: []string{"http://localhost:5173", "https://ebiznes-frontend-lab-deeubxeweee7euab.polandcentral-01.azurewebsites.net"},
         AllowMethods: []string{echo.GET, echo.POST},
     }))
 
