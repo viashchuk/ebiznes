@@ -39,3 +39,18 @@ jobs:
           context: ./task-5/server
           tags: ghcr.io/${{ env.REPO }}/server:${{ github.sha }}
           file: task-5/server/Dockerfile
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v5
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Build server - ${{ github.repository }})
+          body: Build status - ${{ needs.build.result }}
+          to: ${{ secrets.TO_EMAIL }}
+          from: ${{ secrets.FROM_NAME }}
