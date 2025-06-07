@@ -1,6 +1,12 @@
 
 # Task - 1: Docker
 
+# Demo
+
+https://github.com/user-attachments/assets/d569b553-b356-4273-818b-ffdb2da4e674
+
+# Tasks
+
 - 3.0 Ubuntu image with Python version 3.10: [Commit](https://github.com/viashchuk/ebiznes/commit/eaa63579586282492c17851f7dec0a50ab276f8c)
 - 3.5 Ubuntu:24.02 image with Java version 8 and Kotlin: [Commit](https://github.com/viashchuk/ebiznes/commit/a1f18ab7ce078cda9ba111280ebe052b39a31627)
 - 4.0 Add the latest Gradle and the JDBC SQLite package to the above as part of a Gradle project (build.gradle): [Commit](https://github.com/viashchuk/ebiznes/commit/52007ef0e944fa67d79554532bb09f98f5c71937)
@@ -10,7 +16,3 @@
 ## Docker Hub
 
 - [viktoriiaiashchuk/task-1](https://hub.docker.com/r/viktoriiaiashchuk/task-1)
-
-## Demo
-
-https://github.com/user-attachments/assets/d569b553-b356-4273-818b-ffdb2da4e674
