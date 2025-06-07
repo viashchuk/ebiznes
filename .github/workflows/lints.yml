@@ -1,6 +1,9 @@
 name: Lints
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'task-5/server/**'
 
 jobs:
   golangci-lint:
