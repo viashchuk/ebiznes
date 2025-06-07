@@ -40,7 +40,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO }}/client:${{ github.sha }}
           file: task-5/client/Dockerfile
 
-  deploy:
+  notify:
     needs: build
     runs-on: ubuntu-latest
 
