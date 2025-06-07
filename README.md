@@ -161,13 +161,13 @@ Kod: [Llama bot](./task-9)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/80212ee144ca71a85532ceb0b661732d17b381ab)
 
-:white_check_mark: 3.5 wymaganie 2 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/09d97f6db1b8482c3226abc4d850c5b7c29e116e)
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/09d97f6db1b8482c3226abc4d850c5b7c29e116e)
 
-:white_check_mark: 4.0 wymaganie 3 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/d8ea8c482362bdafe0e4ad7bb26c5241bbdd3a3f)
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ebiznes/commit/d8ea8c482362bdafe0e4ad7bb26c5241bbdd3a3f)
 
-:white_check_mark: 4.5 wymaganie 4 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/72435a2b6ba58892a5a90990167e9b69486e5a3c)
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ebiznes/commit/72435a2b6ba58892a5a90990167e9b69486e5a3c)
 
-:white_check_mark: 5.0 wymaganie 5 [Link do commita 1](https://github.com/viashchuk/ebiznes/commit/22a4ab07b9eda66d098c23ceabbb6be38e65a38e), [Link do commita 2](https://github.com/viashchuk/ebiznes/commit/6fd2e4d9b54aabb1504101f012683bf88653af6c)
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5.1](https://github.com/viashchuk/ebiznes/commit/22a4ab07b9eda66d098c23ceabbb6be38e65a38e), [Link do commita 5.2](https://github.com/viashchuk/ebiznes/commit/6fd2e4d9b54aabb1504101f012683bf88653af6c)
 
 
 Kod: [Cloud/CI](./task-10)
