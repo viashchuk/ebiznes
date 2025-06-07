@@ -10,7 +10,7 @@ const RootLayout = () => {
         <div>
             <header className="grid grid-cols-3 gap-6 py-2 px-6 items-center border-b border-gray-200">
                 <div className="grow">
-                    <Link to="/" className="font-semibold text-[#fc6a32] text-2xl">Coffee Shop</Link>
+                    <Link to="/" className="font-semibold text-[#fc6a32] text-2xl">Coffee Shop 1</Link>
                 </div>
                 <div className="text-center">
                     <Link to="/" className="transition duration-200 hover:text-[#fc6a32] font-medium">Produkty</Link>
