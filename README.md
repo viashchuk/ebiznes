@@ -169,7 +169,6 @@ Kod: [Llama bot](./task-9)
 
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 5.1](https://github.com/viashchuk/ebiznes/commit/22a4ab07b9eda66d098c23ceabbb6be38e65a38e), [Link do commita 5.2](https://github.com/viashchuk/ebiznes/commit/6fd2e4d9b54aabb1504101f012683bf88653af6c)
 
-
-[App Link](https://ebiznes-frontend-lab-deeubxeweee7euab.polandcentral-01.azurewebsites.net/)
-
 Kod: [Cloud/CI](./task-10)
+
+App Link: [link](https://ebiznes-frontend-lab-deeubxeweee7euab.polandcentral-01.azurewebsites.net/)
